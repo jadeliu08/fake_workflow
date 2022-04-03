@@ -15,6 +15,8 @@ ReactDOM.render(
                 <Route path="expenses" element={<Expenses/>}/>
                 <Route path="invoices" element={<Invoices/>}>
                     <Route path=":id" element={<Invoice/>}/>
+                    {/* index route共享父路径 */}
+                    <Route index element={<main style={{padding: "1rem"}}><p>Select an invoice</p></main>}/>
                 </Route>
                 <Route path="*" element={<main style={{padding: "1rem"}}><p>There is nothing here!</p></main>}/>
             </Route>

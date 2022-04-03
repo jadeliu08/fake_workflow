@@ -14,4 +14,10 @@ function getInvoice(number) {
     return invoices.find((invoice) => (invoice.number === number));
 }
 
-export {getInvoice}
+function deleteInvoice(number) {
+    invoices = invoices.filter(
+        (invoice) => invoice.number !== number
+    );
+}
+
+export {getInvoice, deleteInvoice};
