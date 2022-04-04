@@ -1,4 +1,4 @@
-import {Link, useParams, Outlet, useNavigate} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {getInvoices, getInvoice, deleteInvoice} from "../data";
 
 function Invoices() {
@@ -13,7 +13,6 @@ function Invoices() {
                     ))
                 }
             </nav>
-            <Outlet/>
         </div>
     );
 }
@@ -21,7 +20,6 @@ function Invoices() {
 function Invoice() {
     let params = useParams();
     const invoice = getInvoice(parseInt(params.id, 10));
-    const navigate = useNavigate();
     return <main>
         <h2>Total Due: {invoice.amount}</h2>
         <p>{invoice.name}: {invoice.number}</p>
@@ -30,7 +28,6 @@ function Invoice() {
             <button onClick={
                 (e) => {
                     deleteInvoice(invoice.number);
-                    navigate("/invoices");
                 }
             }>Delete
             </button>
