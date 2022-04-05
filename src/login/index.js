@@ -1,22 +1,23 @@
 import {useState} from "react";
+import {useHistory} from "react-router-dom";
 import "./index.css";
 
 function Login() {
     const [username, setUsername] = useState(localStorage.getItem("username") || "");
     const [password, setPassword] = useState(localStorage.getItem("password") || "");
+    const history = useHistory();
 
-    function handleBtnClick() {
-        localStorage.setItem("username", username);
-        localStorage.setItem("password", password);
-        localStorage.setItem("isLogged", "true");
+    function handleBtnClick(e) {
+        if (e.type === "click" || e.keyCode === 13) {
+            localStorage.setItem("username", username);
+            localStorage.setItem("password", password);
+            localStorage.setItem("logged", "true");
+            history.push("/");
+        }
     }
 
     return (
-        <div className="login-wrapper" onKeyUp={(e) => {
-            if (e.keyCode === 13) {
-                handleBtnClick();
-            }
-        }}>
+        <div className="login-wrapper" onKeyUp={handleBtnClick}>
             <div className="login-item">
                 <span className="label">用户名：</span>
                 <div className="content">

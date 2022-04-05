@@ -1,0 +1,9 @@
+.page {
+    display: grid;
+    grid-template-rows: 10% auto;
+    grid-template-columns: 20% auto;
+}
+
+.page .header {
+    grid-column: 1/-1;
+}
