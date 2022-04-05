@@ -4,11 +4,12 @@ import {BrowserRouter} from "react-router-dom";
 
 
 import './index.css';
-import {ParamsExample} from "./example";
+import App from "./App";
+// import {ParamsExample} from "./example";
 
 ReactDOM.render(
     <BrowserRouter>
-        <ParamsExample/>
+        <App/>
     </BrowserRouter>
     ,
     document.getElementById('root')
