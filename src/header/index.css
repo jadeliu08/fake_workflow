@@ -1,0 +1,14 @@
+.header-menu {
+    display: inline-flex;
+    list-style: none;
+    position: absolute;
+    right: 0;
+}
+
+.header-menu li {
+    padding: 0 5px;
+}
+
+.header-logo {
+    width: 40vw;
+}

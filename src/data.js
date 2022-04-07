@@ -1,23 +1,10 @@
-let invoices = [
-    {name: "Santa Monica", number: 1995, amount: "$10,800", due: "12/05/1995",},
-    {name: "Stankonia", number: 2000, amount: "$8,000", due: "10/31/2000",},
-    {name: "Ocean Avenue", number: 2003, amount: "$9,500", due: "07/22/2003",},
-    {name: "Tubthumper", number: 1997, amount: "$14,000", due: "09/01/1997",},
-    {name: "Wide Open Spaces", number: 1998, amount: "$4,600", due: "01/27/1998",},
-];
+let userSidebarDataSource = [
+    {key: "inbox", text: "待办任务", type: "inbox", spriteCssClass: "", path: "/tasks?status=pending"},
+    {key: "assign", text: "待签任务", type: "assign", spriteCssClass: "", path: "/tasks?status=candidate"},
+    {key: "delegation", text: "代理任务", type: "delegation", spriteCssClass: "", path: "/tasks?status=delegate"},
+    {key: "task_history", text: "任务历史", type: "task_history", spriteCssClass: "", path: "/tasks/history"},
+    {key: "start_workflow", text: "发起流程", type: "start_workflow", spriteCssClass: "", path: "/process_definitions"},
+    {key: "my_process", text: "我的流程", type: "my_process", spriteCssClass: "", path: "/process_instances"}
+]
 
-export function getInvoices() {
-    return invoices;
-}
-
-function getInvoice(number) {
-    return invoices.find((invoice) => (invoice.number === number));
-}
-
-function deleteInvoice(number) {
-    invoices = invoices.filter(
-        (invoice) => invoice.number !== number
-    );
-}
-
-export {getInvoice, deleteInvoice};
+export {userSidebarDataSource};

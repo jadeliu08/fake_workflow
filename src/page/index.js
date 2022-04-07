@@ -1,10 +1,14 @@
 import React, {useContext} from "react";
-import {Redirect, Route, Switch, Link} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 
 import {authContext} from "../contexts";
 import OceanXAuth from "../authentication";
 import Header from "../header";
-import "./index.css"
+import "./index.css";
+import UserSidebar from "../userSidebar";
+import Tasks, {HistoryTasks} from "../Tasks";
+import {ProcessDefinitionList} from "../ProcessDefinitions";
+import {ProcessInstanceList} from "../ProcessInstances";
 
 
 function Page() {
@@ -16,17 +20,14 @@ function Page() {
                     <Header/>
                 </div>
                 <div className="sidebar">
-                    <nav>
-                        <li>1</li>
-                        <li>2</li>
-                    </nav>
+                    <UserSidebar/>
                 </div>
                 <div className="content">
-                    Content
-                    <Link to="/about">About</Link>
-                    <Switch children={<h2>Switch children</h2>}>
-                        <Route exact path="/about" render={() => (<h2>render</h2>)}/>
-                        <Route render={() => (<h2>No path</h2>)}/>
+                    <Switch>
+                        <Route exact path="/tasks" component={Tasks}/>
+                        <Route path="/tasks/history" component={HistoryTasks}/>
+                        <Route path="/process_definitions" component={ProcessDefinitionList}/>
+                        <Route path="/process_instances" component={ProcessInstanceList}/>
                     </Switch>
                 </div>
             </div>
