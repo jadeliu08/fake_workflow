@@ -1,7 +1,12 @@
 .page {
+    height: 100vh;
     display: grid;
-    grid-template-rows: 10% auto;
-    grid-template-columns: 20% auto;
+    grid-template-rows: 10vh auto;
+    grid-template-columns: 20vw auto;
+}
+
+.page .header, .page .sidebar, .page .content {
+    outline: 1px solid #FF0000FF;
 }
 
 .page .header {

@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {Redirect} from "react-router-dom";
+import {Redirect, Route, Switch, Link} from "react-router-dom";
 
 import {authContext} from "../contexts";
 import OceanXAuth from "../authentication";
@@ -21,7 +21,14 @@ function Page() {
                         <li>2</li>
                     </nav>
                 </div>
-                <div className="content">Content</div>
+                <div className="content">
+                    Content
+                    <Link to="/about">About</Link>
+                    <Switch children={<h2>Switch children</h2>}>
+                        <Route exact path="/about" render={() => (<h2>render</h2>)}/>
+                        <Route render={() => (<h2>No path</h2>)}/>
+                    </Switch>
+                </div>
             </div>
         </OceanXAuth>
         : <Redirect to="/login"/>;

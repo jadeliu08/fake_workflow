@@ -7,7 +7,7 @@ import Page from "./page";
 
 function App() {
     return <BrowserRouter>
-        <Route exact path="/" component={Page}/>
+        <Route path="/" component={Page}/>
         <Route path="/login" component={Login}/>
         <Route path="/logout" component={Logout}/>
     </BrowserRouter>;
