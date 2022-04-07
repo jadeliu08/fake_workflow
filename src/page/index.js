@@ -1,15 +1,21 @@
-import React, {useContext} from "react";
-import {Redirect, Route, Switch} from "react-router-dom";
+import React, {useContext, useRef, useEffect} from "react";
+import {Redirect} from "react-router-dom";
 
 import {authContext} from "../contexts";
 import OceanXAuth from "../authentication";
 import Header from "../header";
 import "./index.css";
 import UserSidebar from "../userSidebar";
-import Tasks, {HistoryTasks} from "../Tasks";
-import {ProcessDefinitionList} from "../ProcessDefinitions";
-import {ProcessInstanceList} from "../ProcessInstances";
 
+let containerRef = null;
+
+function Container() {
+    const innerRef = useRef();
+    useEffect(function () {
+        containerRef = innerRef.current;
+    }, []);
+    return (<div ref={innerRef}/>);
+}
 
 function Page() {
     const context = useContext(authContext);
@@ -23,12 +29,7 @@ function Page() {
                     <UserSidebar/>
                 </div>
                 <div className="content">
-                    <Switch>
-                        <Route exact path="/tasks" component={Tasks}/>
-                        <Route path="/tasks/history" component={HistoryTasks}/>
-                        <Route path="/process_definitions" component={ProcessDefinitionList}/>
-                        <Route path="/process_instances" component={ProcessInstanceList}/>
-                    </Switch>
+                    <Container/>
                 </div>
             </div>
         </OceanXAuth>
@@ -36,3 +37,4 @@ function Page() {
 }
 
 export default Page;
+export {containerRef};
