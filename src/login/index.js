@@ -1,22 +1,25 @@
-import {useState} from "react";
-import {useHistory} from "react-router-dom";
+import React, {useContext, useState} from "react";
+import {Redirect, withRouter} from "react-router-dom";
+import {authContext} from "../contexts";
 import "./index.css";
 
-function Login() {
+function Login(props) {
     const [username, setUsername] = useState(localStorage.getItem("username") || "");
     const [password, setPassword] = useState(localStorage.getItem("password") || "");
-    const history = useHistory();
+    const context = useContext(authContext);
+
 
     function handleBtnClick(e) {
         if (e.type === "click" || e.keyCode === 13) {
             localStorage.setItem("username", username);
             localStorage.setItem("password", password);
             localStorage.setItem("logged", "true");
-            history.push("/");
+            context.logged = true;
+            props.history.push("/");
         }
     }
 
-    return (
+    return context.logged ? <Redirect to="/"/> : (
         <div className="login-wrapper" onKeyUp={handleBtnClick}>
             <div className="login-item">
                 <span className="label">用户名：</span>
@@ -44,4 +47,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default withRouter(Login);
