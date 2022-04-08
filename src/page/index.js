@@ -1,20 +1,27 @@
-import React, {useContext, useRef, useEffect} from "react";
-import {Redirect} from "react-router-dom";
+import React, {useContext} from "react";
+import {Redirect, Switch, Route} from "react-router-dom";
 
 import {authContext} from "../contexts";
 import OceanXAuth from "../authentication";
 import Header from "../header";
 import "./index.css";
 import UserSidebar from "../userSidebar";
+import Tasks, {HistoryTasks} from "../Tasks";
+import {ProcessDefinitionList} from "../ProcessDefinitions";
+import {ProcessInstanceList} from "../ProcessInstances";
 
-let containerRef = null;
 
 function Container() {
-    const innerRef = useRef();
-    useEffect(function () {
-        containerRef = innerRef.current;
-    }, []);
-    return (<div ref={innerRef}/>);
+    return (
+        <div>
+            <Switch>
+                <Route exact path="/tasks" component={Tasks}/>
+                <Route path="/tasks/history" component={HistoryTasks}/>
+                <Route path="/process_definitions" component={ProcessDefinitionList}/>
+                <Route path="/process_instances" component={ProcessInstanceList}/>
+            </Switch>
+        </div>
+    );
 }
 
 function Page() {
@@ -37,4 +44,3 @@ function Page() {
 }
 
 export default Page;
-export {containerRef};
