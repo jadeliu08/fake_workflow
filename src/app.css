@@ -1,0 +1,13 @@
+.child {
+    border-bottom: 1px solid #1989fa;
+    padding: 6px;
+}
+
+.k-button {
+    margin-top: 10px;
+    border: 1px solid #1989fa;
+    background-color: #1989fa;
+    border-radius: 4px;
+    padding: 6px;
+    cursor: pointer;
+}
