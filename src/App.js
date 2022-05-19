@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import "./app.css";
 
 function Page(props) {
@@ -66,13 +66,22 @@ function App() {
         }
     });
     const [count, setCount] = useState(0);
+    useMemo(function () {
+        console.log("App useMemo callback called");
+        return "useMemo";
+    }, []);
     return <Page>
         <Header />
         <Container>
             <div className="child">Child1</div>
             <div className="child">Child2</div>
             <div className="child">Child3</div>
-            <button type="button" className="k-button" onClick={() => { setCount(count + 1) }}>Click Me</button>
+            <button type="button" className="k-button" onClick={() => {
+                setCount(function(count){return count + 2});
+                setCount(function(count){return count + 2});
+                setCount(function(count){return count + 2});
+                setCount(function(count){return count + 2});
+            }}>Click Me</button>
             <br />
             <span>{count}</span>
         </Container>
