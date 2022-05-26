@@ -1,6 +1,4 @@
-function PendingTasks() {
-    return (<div>PendingTasks</div>);
-}
+import {PendingTaskGrid} from "./tasks/pendingtask";
 
 function HistoryTasks() {
     return (<div>HistoryTasks</div>);
@@ -18,14 +16,14 @@ function DelegationTasks() {
 function Tasks(props) {
     let urlParams = new URLSearchParams(props.location.search), status = urlParams.get("status");
     let specifyTask = {
-        pending: PendingTasks,
+        pending: PendingTaskGrid,
         candidate: CandidateTasks,
         delegate: DelegationTasks
     };
-    var Component = specifyTask[status] || PendingTasks;
+    var Component = specifyTask[status] || PendingTaskGrid;
     return <div>{<Component/>}</div>;
 }
 
 export default Tasks;
 
-export {HistoryTasks, CandidateTasks, PendingTasks, DelegationTasks};
+export {HistoryTasks};
