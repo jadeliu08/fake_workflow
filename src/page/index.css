@@ -3,10 +3,15 @@
     display: grid;
     grid-template-rows: 10vh auto;
     grid-template-columns: 20vw auto;
+    overflow: hidden;
 }
 
 .page .header, .page .sidebar, .page .content {
     outline: 1px solid #FF0000FF;
+}
+
+.page .content {
+    overflow: auto;
 }
 
 .page .header {

@@ -1,4 +1,4 @@
-import {PendingTaskGrid} from "./tasks/pendingtask";
+import {PendingTaskSplitterGrid} from "./tasks/pendingtask";
 
 function HistoryTasks() {
     return (<div>HistoryTasks</div>);
@@ -16,12 +16,12 @@ function DelegationTasks() {
 function Tasks(props) {
     let urlParams = new URLSearchParams(props.location.search), status = urlParams.get("status");
     let specifyTask = {
-        pending: PendingTaskGrid,
+        pending: PendingTaskSplitterGrid,
         candidate: CandidateTasks,
         delegate: DelegationTasks
     };
-    var Component = specifyTask[status] || PendingTaskGrid;
-    return <div>{<Component/>}</div>;
+    var Component = specifyTask[status] || PendingTaskSplitterGrid;
+    return <>{<Component/>}</>;
 }
 
 export default Tasks;

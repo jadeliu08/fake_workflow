@@ -13,14 +13,12 @@ import {ProcessInstanceList} from "../ProcessInstances";
 
 function Container() {
     return (
-        <div>
-            <Switch>
-                <Route exact path="/tasks" component={Tasks}/>
-                <Route path="/tasks/history" component={HistoryTasks}/>
-                <Route path="/process_definitions" component={ProcessDefinitionList}/>
-                <Route path="/process_instances" component={ProcessInstanceList}/>
-            </Switch>
-        </div>
+        <Switch>
+            <Route exact path="/tasks" component={Tasks}/>
+            <Route path="/tasks/history" component={HistoryTasks}/>
+            <Route path="/process_definitions" component={ProcessDefinitionList}/>
+            <Route path="/process_instances" component={ProcessInstanceList}/>
+        </Switch>
     );
 }
 
