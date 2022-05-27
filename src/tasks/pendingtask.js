@@ -1,8 +1,8 @@
+import {useLayoutEffect, useRef} from "react";
 import {Grid, GridColumn, GridToolbar} from "@progress/kendo-react-grid";
 import {ExcelExport} from "@progress/kendo-react-excel-export";
-
+import {Splitter} from "@progress/kendo-react-layout";
 import {pendingTaskDataSource} from "../data";
-import {useRef} from "react";
 
 function PendingTaskGrid() {
     const exportRef = useRef(null);
@@ -14,7 +14,7 @@ function PendingTaskGrid() {
     }
 
     return <ExcelExport data={pendingTaskDataSource} ref={exportRef} fileName="test.xlsx">
-        <Grid data={pendingTaskDataSource} scrollable="scrollable" pageable={true} style={{height: "500px"}}>
+        <Grid data={pendingTaskDataSource} scrollable="virtual" pageable={true}>
             <GridToolbar>
                 <button title="Export Excel" className="k-button k-button-md k-rounded-md k-button-outline-primary" onClick={handleExportToExcel}>Export to Excel</button>
             </GridToolbar>
@@ -30,9 +30,20 @@ function PendingTaskGrid() {
     </ExcelExport>;
 }
 
-function PendingTaskTabStrip(){
-    return <div></div>;
+function PendingTaskTabStrip() {
+    return <div>TabStrip</div>;
+}
+
+function PendingTaskSplitterGrid() {
+    const panes = [{size: "60%", scrollable: false}, {}];
+    const children = [<PendingTaskGrid key="pendingTaskGrid"></PendingTaskGrid>, <PendingTaskTabStrip key="pendingTaskTabStrip"></PendingTaskTabStrip>];
+    const ref = useRef(null);
+    useLayoutEffect(function (){
+        const container = ref.current._container;
+        container.style.height = container.parentElement.clientHeight + "px";
+    }, []);
+    return <Splitter panes={panes} orientation="vertical" children={children} ref={ref}></Splitter>;
 }
 
 
-export {PendingTaskGrid}
+export {PendingTaskSplitterGrid}
