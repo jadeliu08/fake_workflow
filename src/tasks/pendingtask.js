@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
 
 import {Grid, GridColumn, GridToolbar} from "@progress/kendo-react-grid";
 import {ExcelExport} from "@progress/kendo-react-excel-export";
@@ -51,7 +51,8 @@ function PendingTaskTabStrip() {
     useEffect(function () {
         emitter.on("pendingTaskGridRowClick", gridRowClickEmitter);
         return () => emitter.off("pendingTaskGridRowClick", gridRowClickEmitter);
-    }, [rowDataItem]);
+    }, []);
+
     var children = [
         <span title="流程图" key="diagram" children={<TabContentDiagram dataItem={rowDataItem}/>}></span>,
         <span title="历史记录" key="history" children={<TabContentHistory dataItem={rowDataItem}/>}></span>,
