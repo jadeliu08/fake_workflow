@@ -1,4 +1,4 @@
-import {useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 
 import {Grid, GridColumn, GridToolbar} from "@progress/kendo-react-grid";
 import {ExcelExport} from "@progress/kendo-react-excel-export";
@@ -40,15 +40,15 @@ function PendingTaskGrid() {
 function PendingTaskTabStrip() {
     const [selectedIndex, setTabSelectedIndex] = useState(0);
     const [rowDataItem, setRowDataItem] = useState(null);
-    const gridRowClickEmitter = function (dataItem) {
-        setRowDataItem(dataItem);
-    };
 
     function handleSelect(item) {
         setTabSelectedIndex(item.selected);
     }
 
     useEffect(function () {
+        const gridRowClickEmitter = function (dataItem) {
+            setRowDataItem(dataItem);
+        };
         emitter.on("pendingTaskGridRowClick", gridRowClickEmitter);
         return () => emitter.off("pendingTaskGridRowClick", gridRowClickEmitter);
     }, []);
