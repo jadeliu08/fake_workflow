@@ -835,4 +835,79 @@ let pendingTaskDataSource = [
     }
 ]
 
-export {userSidebarDataSource, pendingTaskDataSource};
+const processDefinitionDataSource = [
+    {
+        "id": "demo:8:dc95d592-271b-11ec-9a8c-0242ac110005", "name": "demo", "description": "", "key": "demo", "category": null, "version": 8, "deploymentId": null,
+        "tenantId": null, "ou": 1, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF32:1:e904b9b9-4059-11eb-8b0c-0242ac110003", "name": "合約審核流程", "description": "", "key": "WF32", "category": null, "version": 1, "deploymentId": null,
+        "tenantId": null, "ou": 42, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF107:1:2ad33e87-bdcb-11eb-96a7-0242ac110003", "name": "三菱電機流程", "description": "", "key": "WF107", "category": null, "version": 1, "deploymentId": null,
+        "tenantId": null, "ou": 51, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF147:5:4fba6cd9-4786-11ec-bb33-0242ac110005", "name": "Leave application process", "description": "", "key": "WF147", "category": null, "version": 5,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF167:5:d63c38dd-cf65-11ec-832a-0242ac110004", "name": "Expense Claim application", "description": "", "key": "WF167", "category": null, "version": 5,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF7707:4:9b3bdc8f-1214-11ec-bd7d-0242ac110002", "name": "demo-1", "description": "", "key": "WF7707", "category": null, "version": 4, "deploymentId": null,
+        "tenantId": null, "ou": 1, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF12707:1:874b166c-1f5c-11ec-9a8c-0242ac110005", "name": "test-initiator-ou-role", "description": "", "key": "WF12707", "category": null, "version": 1,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF12709:2:04799c41-46e0-11ec-bb33-0242ac110005", "name": "Travel Claim Application", "description": "", "key": "WF12709", "category": null, "version": 2,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF12708:3:a0dbd8d0-4754-11ec-bb33-0242ac110005", "name": "OT Approval application", "description": "", "key": "WF12708", "category": null, "version": 3,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF15208:2:2f15b24c-3a48-11ec-b372-0242ac110006", "name": "Expense Claim application (New)", "description": "", "key": "WF15208", "category": null, "version": 2,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF17706:1:097e4654-4757-11ec-bb33-0242ac110005", "name": "OT approval (New)", "description": "", "key": "WF17706", "category": null, "version": 1,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF17710:1:77ab4fcc-4789-11ec-bb33-0242ac110005", "name": "Leave application (New)", "description": "", "key": "WF17710", "category": null, "version": 1,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF20207:1:617d12b0-4c64-11ec-87af-0242ac110007", "name": "executor test", "description": "", "key": "WF20207", "category": null, "version": 1,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF20209:1:bee8225a-5278-11ec-87af-0242ac110007", "name": "合同审核申请流程", "description": "", "key": "WF20209", "category": null, "version": 1,
+        "deploymentId": null, "tenantId": null, "ou": 103, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF35207:1:6dbb3fa6-ac03-11ec-b0e6-0242ac110002", "name": "Deliverable Review", "description": "", "key": "WF35207", "category": null, "version": 1,
+        "deploymentId": null, "tenantId": null, "ou": 125, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF37706:1:ba88d221-af61-11ec-947d-0242ac110008", "name": "WGS Proforma", "description": "", "key": "WF37706", "category": null, "version": 1,
+        "deploymentId": null, "tenantId": null, "ou": 127, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF45206:1:b438084c-c85c-11ec-8533-0242ac110008", "name": "test mail task", "description": "", "key": "WF45206", "category": null, "version": 1, "deploymentId": null,
+        "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    },
+    {
+        "id": "WF47706:1:076c901b-cf6e-11ec-832a-0242ac110004", "name": "Expense Claim application-new import", "description": "", "key": "WF47706", "category": null, "version": 1,
+        "deploymentId": null, "tenantId": null, "ou": 72, "suspensionState": 1, "signature": false, "hasStartForm": false
+    }
+];
+
+export {userSidebarDataSource, pendingTaskDataSource, processDefinitionDataSource};

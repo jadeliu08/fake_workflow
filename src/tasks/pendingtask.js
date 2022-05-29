@@ -62,14 +62,13 @@ function PendingTaskTabStrip() {
 }
 
 function TabContentDiagram(props) {
-    const {dataItem} = props;
     return <>
-        <div><span className="label">任务名称：</span><span>{dataItem.name}</span></div>
-        <div><span className="label">发起人：</span><span>{dataItem.processInstanceStartUserId}</span></div>
-        <div><span className="label">创建时间：</span><span>{dataItem.created}</span></div>
-        <div><span className="label">过期时间：</span><span>{dataItem.dueDate}</span></div>
-        <div><span className="label">流程主题：</span><span>{dataItem.processInstanceDescription}</span></div>
-        <div><span className="label">描述：</span><span>{dataItem.description}</span></div>
+        <div className="k-d-flex"><span className="label k-pr-3 k-pb-2">任务名称</span><span>{props.dataItem.name}</span></div>
+        <div className="k-d-flex"><span className="label k-pr-3 k-pb-2">发起人</span><span>{props.dataItem.processInstanceStartUserId}</span></div>
+        <div className="k-d-flex"><span className="label k-pr-3 k-pb-2">创建时间</span><span>{props.dataItem.created}</span></div>
+        <div className="k-d-flex"><span className="label k-pr-3 k-pb-2">过期时间</span><span>{props.dataItem.dueDate}</span></div>
+        <div className="k-d-flex"><span className="label k-pr-3 k-pb-2">流程主题</span><span>{props.dataItem.processInstanceDescription}</span></div>
+        <div className="k-d-flex"><span className="label k-pr-3 k-pb-2">描述</span><span>{props.dataItem.description}</span></div>
     </>;
 }
 
