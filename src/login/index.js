@@ -4,16 +4,16 @@ import {authContext} from "../contexts";
 import "./index.css";
 
 function Login(props) {
-    const [username, setUsername] = useState(localStorage.getItem("username") || "");
-    const [password, setPassword] = useState(localStorage.getItem("password") || "");
+    const [username, setUsername] = useState(sessionStorage.getItem("username") || "");
+    const [password, setPassword] = useState(sessionStorage.getItem("password") || "");
     const context = useContext(authContext);
 
 
     function handleBtnClick(e) {
         if (e.type === "click" || e.keyCode === 13) {
-            localStorage.setItem("username", username);
-            localStorage.setItem("password", password);
-            localStorage.setItem("logged", "true");
+            sessionStorage.setItem("username", username);
+            sessionStorage.setItem("password", password);
+            sessionStorage.setItem("logged", "true");
             context.logged = true;
             props.history.push("/");
         }

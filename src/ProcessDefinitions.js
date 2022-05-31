@@ -3,12 +3,14 @@ import {Card, CardTitle, CardBody} from "@progress/kendo-react-layout";
 import {processDefinitionDataSource} from "./data";
 
 function ProcessDefinitionList() {
-    function handleClick(e) {
-        debugger;
+    function handleClick(dataItem) {
+        console.log(dataItem);
     }
-    return <div className="k-d-no-gap-flex" onClick={handleClick}>
+    return <div className="k-d-no-gap-flex">
         {processDefinitionDataSource.map(item => {
-            return <Card key={item.id} className="k-cursor-pointer" style={{fontSize: "12px"}}>
+            return <Card key={item.id} className="k-cursor-pointer" style={{fontSize: "12px"}} onClick={function () {
+                handleClick(item);
+            }}>
                 <CardBody>
                     <CardTitle></CardTitle>
                     <div className="k-pb-1"><span>版本：</span>{item.version}</div>
