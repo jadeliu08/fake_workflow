@@ -1,11 +1,22 @@
 import {Card, CardTitle, CardBody} from "@progress/kendo-react-layout";
+import {Dialog} from "@progress/kendo-react-dialogs";
 
 import {processDefinitionDataSource} from "./data";
+import {useState} from "react";
 
 function ProcessDefinitionList() {
-    function handleClick(dataItem) {
-        console.log(dataItem);
+    const [dialogOptions, setDialogOptions] = useState({visible: false, definition: null});
+    const dialogProps = {
+        title: "发起流程", autoFocus: true, width: "500px", height: "300px",
+        onClose: () => {
+            setDialogOptions({visible:false, definition: null});
+        }
     }
+
+    function handleClick(dataItem) {
+        setDialogOptions({visible: true, definition: dataItem});
+    }
+
     return <div className="k-d-no-gap-flex">
         {processDefinitionDataSource.map(item => {
             return <Card key={item.id} className="k-cursor-pointer" style={{fontSize: "12px"}} onClick={function () {
@@ -19,6 +30,12 @@ function ProcessDefinitionList() {
                 </CardBody>
             </Card>;
         })}
+        {
+            dialogOptions.visible && <Dialog {...dialogProps}>
+                <div><span>版本: </span>{dialogOptions.definition && dialogOptions.definition.version}</div>
+                <div><span>版本: </span>{dialogOptions.definition && dialogOptions.definition.name}</div>
+            </Dialog>
+        }
     </div>;
 }
 
