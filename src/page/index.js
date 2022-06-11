@@ -9,6 +9,7 @@ import UserSidebar from "../userSidebar";
 import Tasks, {HistoryTasks} from "../Tasks";
 import {ProcessDefinitionList} from "../ProcessDefinitions";
 import {ProcessInstanceList} from "../ProcessInstances";
+import context from "react-router/modules/RouterContext";
 
 
 function Container() {
@@ -22,9 +23,13 @@ function Container() {
     );
 }
 
+function Test(context) {
+    return null;
+}
+
 function Page() {
-    const context = useContext(authContext);
-    return context.logged ?
+    const authContextValue = useContext(authContext);
+    return authContextValue.logged ?
         <OceanXAuth>
             <div className="page">
                 <div className="header">
@@ -36,6 +41,14 @@ function Page() {
                 <div className="content">
                     <Container/>
                 </div>
+                {/*第一种写法使用children属性*/}
+                <authContext.Consumer children={Test}></authContext.Consumer>
+                {/*第二种写法*/}
+                {/*<authContext.Consumer>*/}
+                {/*    {*/}
+                {/*        (context)=>{console.log(context);}*/}
+                {/*    }*/}
+                {/*</authContext.Consumer>*/}
             </div>
         </OceanXAuth>
         : <Redirect to="/login"/>;
