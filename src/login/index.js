@@ -8,6 +8,11 @@ function Login(props) {
     const [password, setPassword] = useState(sessionStorage.getItem("password") || "");
     const context = useContext(authContext);
 
+    // setTimeout(function () {
+    //     debugger;
+    //     setUsername("jade");
+    // });
+
 
     function handleBtnClick(e) {
         if (e.type === "click" || e.keyCode === 13) {
