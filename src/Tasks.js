@@ -9,11 +9,8 @@ import {PendingTaskSplitterGrid} from "./tasks/pendingtask";
 // }
 
 class TextMemo extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
+        console.log("TextMemo");
         return <div>TextMemo</div>;
     }
 }

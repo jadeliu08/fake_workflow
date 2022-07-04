@@ -9,7 +9,6 @@ import UserSidebar from "../userSidebar";
 import Tasks, {HistoryTasks} from "../Tasks";
 import {ProcessDefinitionList} from "../ProcessDefinitions";
 import {ProcessInstanceList} from "../ProcessInstances";
-import context from "react-router/modules/RouterContext";
 
 
 function Container() {
