@@ -1,5 +1,7 @@
 import React, {useContext} from "react";
 import {Redirect, Switch, Route} from "react-router-dom";
+import {Provider} from "react-redux";
+import store from "../reduxes/store";
 
 import {authContext} from "../contexts";
 import OceanXAuth from "../authentication";
@@ -9,6 +11,7 @@ import UserSidebar from "../userSidebar";
 import Tasks, {HistoryTasks} from "../Tasks";
 import {ProcessDefinitionList} from "../ProcessDefinitions";
 import {ProcessInstanceList} from "../ProcessInstances";
+import Counter from "../counter/counter"
 
 
 function Container() {
@@ -30,25 +33,28 @@ function Page() {
     const authContextValue = useContext(authContext);
     return authContextValue.logged ?
         <OceanXAuth>
-            <div className="page">
-                <div className="header">
-                    <Header/>
+            <Provider store={store}>
+                <div className="page">
+                    <div className="header">
+                        <Header/>
+                    </div>
+                    <div className="sidebar">
+                        <UserSidebar/>
+                    </div>
+                    <div className="content">
+                        <Container/>
+                    </div>
+                    {/*第一种写法使用children属性*/}
+                    <authContext.Consumer children={Test}></authContext.Consumer>
+                    {/*第二种写法*/}
+                    {/*<authContext.Consumer>*/}
+                    {/*    {*/}
+                    {/*        (context)=>{console.log(context);}*/}
+                    {/*    }*/}
+                    {/*</authContext.Consumer>*/}
                 </div>
-                <div className="sidebar">
-                    <UserSidebar/>
-                </div>
-                <div className="content">
-                    <Container/>
-                </div>
-                {/*第一种写法使用children属性*/}
-                <authContext.Consumer children={Test}></authContext.Consumer>
-                {/*第二种写法*/}
-                {/*<authContext.Consumer>*/}
-                {/*    {*/}
-                {/*        (context)=>{console.log(context);}*/}
-                {/*    }*/}
-                {/*</authContext.Consumer>*/}
-            </div>
+                <Counter/>
+            </Provider>
         </OceanXAuth>
         : <Redirect to="/login"/>;
 }
