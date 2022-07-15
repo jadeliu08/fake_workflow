@@ -7,7 +7,6 @@ function UserSidebar() {
     useEffect(function () {
         var worker = new Worker("workers/tasks_worker.js");
         worker.addEventListener("message", function (ev) {
-            console.log(ev.data);
             setTaskCount(ev.data);
         });
         worker.postMessage("");

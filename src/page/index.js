@@ -8,16 +8,17 @@ import OceanXAuth from "../authentication";
 import Header from "../header";
 import "./index.css";
 import UserSidebar from "../userSidebar";
-import Tasks, {HistoryTasks} from "../Tasks";
+import Tasks from "../Tasks";
 import {ProcessDefinitionList} from "../ProcessDefinitions";
 import {ProcessInstanceList} from "../ProcessInstances";
+import HistoryTaskGrid from "../tasks/historytask";
 
 
 function Container() {
     return (
         <Switch>
             <Route exact path="/tasks" component={Tasks}/>
-            <Route path="/tasks/history" component={HistoryTasks}/>
+            <Route path="/tasks/history" component={HistoryTaskGrid}/>
             <Route path="/process_definitions" component={ProcessDefinitionList}/>
             <Route path="/process_instances" component={ProcessInstanceList}/>
         </Switch>
