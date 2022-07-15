@@ -15,7 +15,7 @@ function UserSidebar() {
         {
             userSidebarDataSource.map(function (item) {
                 if (item.key === "inbox") {
-                    return <li key={item.key}><Link to={item.path}>{item.text}</Link><span>{taskCounter}</span></li>
+                    return <li key={item.key}><Link to={item.path}>{item.text}</Link><span className="k-badge k-badge-md !k-rounded-md k-bg-warning">{taskCounter}</span></li>
                 } else {
                     return <li key={item.key}><Link to={item.path}>{item.text}</Link></li>
                 }
