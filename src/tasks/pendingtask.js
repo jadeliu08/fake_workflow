@@ -1,14 +1,16 @@
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useLayoutEffect, useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
 import {Grid, GridColumn, GridToolbar} from "@progress/kendo-react-grid";
 import {ExcelExport} from "@progress/kendo-react-excel-export";
 import {Splitter, TabStrip} from "@progress/kendo-react-layout";
 
-import emitter from "../customEvents";
 import {pendingTaskDataSource} from "../data";
+import TASK_ROW_CLICK from "../reduxes/task"
 
 function PendingTaskGrid() {
     const exportRef = useRef(null);
+    const dispatch = useDispatch();
 
     function handleExportToExcel() {
         if (exportRef) {
@@ -17,7 +19,7 @@ function PendingTaskGrid() {
     }
 
     function handleRowClick(event) {
-        emitter.emit("pendingTaskGridRowClick", event.dataItem);
+        dispatch({type: TASK_ROW_CLICK, rowDataItem: event.dataItem});
     }
 
     return <ExcelExport data={pendingTaskDataSource} ref={exportRef} fileName="test.xlsx">
@@ -39,19 +41,11 @@ function PendingTaskGrid() {
 
 function PendingTaskTabStrip() {
     const [selectedIndex, setTabSelectedIndex] = useState(0);
-    const [rowDataItem, setRowDataItem] = useState(null);
+    const rowDataItem = useSelector((state)=>(state.task.rowDataItem));
 
     function handleSelect(item) {
         setTabSelectedIndex(item.selected);
     }
-
-    useEffect(function () {
-        const gridRowClickEmitter = function (dataItem) {
-            setRowDataItem(dataItem);
-        };
-        emitter.on("pendingTaskGridRowClick", gridRowClickEmitter);
-        return () => emitter.off("pendingTaskGridRowClick", gridRowClickEmitter);
-    }, []);
 
     var children = [
         <span title="流程图" key="diagram" children={<TabContentDiagram dataItem={rowDataItem}/>}></span>,

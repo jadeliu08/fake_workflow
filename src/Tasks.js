@@ -1,16 +1,8 @@
 import React, {useState} from "react";
 import {PendingTaskSplitterGrid} from "./tasks/pendingtask";
 
-// function TextMemo(props) {
-//     console.log("TextMemo render");
-//     return <div>
-//         TextMemo
-//     </div>
-// }
-
 class TextMemo extends React.Component {
     render() {
-        console.log("TextMemo");
         return <div>TextMemo</div>;
     }
 }
@@ -49,10 +41,6 @@ function HistoryTasks() {
         </React.Suspense>
     </div>;
 }
-
-// function CandidateTasks() {
-//     return (<div>CandidateTasks</div>);
-// }
 
 class CandidateTasks extends React.Component {
     constructor(props) {
