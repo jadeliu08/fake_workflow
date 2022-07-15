@@ -2,7 +2,7 @@ import {legacy_createStore, combineReducers} from "redux";
 
 const rootReducer = combineReducers({
     part1: function (state, action) {
-        if (action === "dispatch_part1") {
+        if (action.type === "dispatch_part1") {
             return action.hasOwnProperty("newValue") ? action.newValue : "part1_state";
         }
         return "part1";
