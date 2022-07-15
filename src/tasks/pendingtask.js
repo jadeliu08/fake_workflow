@@ -6,7 +6,7 @@ import {ExcelExport} from "@progress/kendo-react-excel-export";
 import {Splitter, TabStrip} from "@progress/kendo-react-layout";
 
 import {pendingTaskDataSource} from "../data";
-import TASK_ROW_CLICK from "../reduxes/task"
+import {TASK_ACTION, gridRowItemSelector} from "../reduxes/task"
 
 function PendingTaskGrid() {
     const exportRef = useRef(null);
@@ -19,7 +19,7 @@ function PendingTaskGrid() {
     }
 
     function handleRowClick(event) {
-        dispatch({type: TASK_ROW_CLICK, rowDataItem: event.dataItem});
+        dispatch({type: TASK_ACTION.TASK_ROW_CLICK, rowDataItem: event.dataItem});
     }
 
     return <ExcelExport data={pendingTaskDataSource} ref={exportRef} fileName="test.xlsx">
@@ -41,7 +41,7 @@ function PendingTaskGrid() {
 
 function PendingTaskTabStrip() {
     const [selectedIndex, setTabSelectedIndex] = useState(0);
-    const rowDataItem = useSelector((state)=>(state.task.rowDataItem));
+    const rowDataItem = useSelector(gridRowItemSelector);
 
     function handleSelect(item) {
         setTabSelectedIndex(item.selected);
@@ -68,12 +68,12 @@ function TabContentDiagram(props) {
 
 function TabContentHistory(props) {
     const {dataItem} = props;
-    return <>{dataItem.id}--->历史记录</>;
+    return <>{dataItem.processInstanceName}--{dataItem.id}--->历史记录</>;
 }
 
 function TabContentOperationLog(props) {
     const {dataItem} = props;
-    return <>{dataItem.id}--->操作日志</>;
+    return <>{dataItem.processInstanceName}--{dataItem.id}--->操作日志</>;
 }
 
 function PendingTaskSplitterGrid() {
