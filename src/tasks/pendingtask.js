@@ -4,13 +4,26 @@ import {useDispatch, useSelector} from "react-redux";
 import {Grid, GridColumn, GridToolbar} from "@progress/kendo-react-grid";
 import {ExcelExport} from "@progress/kendo-react-excel-export";
 import {Splitter, TabStrip} from "@progress/kendo-react-layout";
+import {Window} from "@progress/kendo-react-dialogs";
 
 import {pendingTaskDataSource} from "../data";
-import {TASK_ACTION, gridRowItemSelector} from "../reduxes/task"
+import {TASK_ACTION, gridRowItemSelector} from "../reduxes/task";
+import {handleClickDoubleClick} from "../utils";
+import TaskHandle from "../taskhandle";
 
 function PendingTaskGrid() {
     const exportRef = useRef(null);
     const dispatch = useDispatch();
+    const [dialogOptions, setDialogOptions] = useState({visible: false});
+    var containerElement = document.getElementById("root");
+    const windowProps = {
+        style: {width: containerElement.offsetWidth, height: containerElement.offsetHeight},
+        title: "任务处理", draggable: false, modal: true, doubleClickStageChange: false, stage: 'FULLSCREEN',
+        appendTo: containerElement,
+        onClose: () => {
+            setDialogOptions({visible: false});
+        }
+    }
 
     function handleExportToExcel() {
         if (exportRef) {
@@ -18,9 +31,16 @@ function PendingTaskGrid() {
         }
     }
 
-    function handleRowClick(event) {
+    function onRowClick(event) {
         dispatch({type: TASK_ACTION.TASK_ROW_CLICK, rowDataItem: event.dataItem});
     }
+
+    function onRowDoubleClick(event) {
+        dispatch({type: TASK_ACTION.TASK_ROW_CLICK, rowDataItem: event.dataItem});
+        setDialogOptions({visible: true});
+    }
+
+    const handleRowClick = handleClickDoubleClick(onRowClick, onRowDoubleClick);
 
     return <ExcelExport data={pendingTaskDataSource} ref={exportRef} fileName="test.xlsx">
         <Grid data={pendingTaskDataSource} scrollable="virtual" pageable={true} onRowClick={handleRowClick}>
@@ -36,6 +56,11 @@ function PendingTaskGrid() {
             <GridColumn field="processDefinitionName" title="流程定义名称"/>
             <GridColumn field="description" title="描述"/>
         </Grid>
+        {
+            dialogOptions.visible && <Window {...windowProps}>
+                <TaskHandle/>
+            </Window>
+        }
     </ExcelExport>;
 }
 

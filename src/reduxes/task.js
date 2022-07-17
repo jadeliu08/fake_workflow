@@ -1,3 +1,5 @@
+import {createSlice} from "@reduxjs/toolkit";
+
 const TASK_ACTION = {
     TASK_ROW_CLICK: "task_row_click"
 }
@@ -16,3 +18,18 @@ const taskReducer = function (state = initialState, action) {
 const gridRowItemSelector = (state) => (state.task.rowDataItem);
 
 export {taskReducer, TASK_ACTION, gridRowItemSelector};
+
+// const taskSlice = createSlice({
+//     name: "task",
+//     reducers: {
+//         "row_click": function (state, action) {
+//             return {...state, rowDataItem: action.rowDataItem}
+//         },
+//         "row_remove": function () {
+//
+//         }
+//     },
+//     initialState: {
+//         rowDataItem: {}
+//     }
+// });
