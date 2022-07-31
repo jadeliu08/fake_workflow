@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useRef, useState} from "react";
 import axios from "axios";
 import "./index.css";
 
-function MenuList() {
+function NavBar() {
     const [dataSource, setDataSource] = useState({data: {}});
     const pagination = useRef({page_now: 0, page_size: 20, page_total: 1});
     const navRef = useRef(null);
@@ -91,4 +91,4 @@ function NavItem(props) {
     </div>
 }
 
-export default MenuList;
+export default NavBar;
