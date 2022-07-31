@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import axios from "axios";
 import "./index.css";
 
@@ -17,19 +17,26 @@ function fetchNavDataSource(page, page_size) {
 
 function MenuList() {
     const [dataSource, setDataSource] = useState({data: {}});
-    const pagination = useRef({page_now: 0, page_size: 20});
+    const pagination = useRef({page_now: 0, page_size: 20, page_total: 1});
     const navRef = useRef(null);
     const oldScrollTop = useRef(0);
     const threshold = useRef(100);
+    const pendingReqApiQueue = useRef([]);//缓存待请求的页
+
+    const fetchDataSource = useMemo(function () {
+        return function () {
+            fetchNavDataSource(pagination.current.page_now + 1, pagination.current.page_size).then(function (resp) {
+                Object.assign(pagination.current, resp.data.data.page);
+                resp.data.data.list.forEach(function (item) {
+                    (dataSource.data.hasOwnProperty(item.date) ? dataSource.data[item.date] : dataSource.data[item.date] = []).push(item);
+                });
+                setDataSource({...dataSource});
+            });
+        }
+    }, []);
 
     useEffect(function () {
-        fetchNavDataSource(pagination.current.page_now + 1, pagination.current.page_size).then(function (resp) {
-            Object.assign(pagination.current, resp.data.data.page);
-            resp.data.data.list.forEach(function (item) {
-                (dataSource.data.hasOwnProperty(item.date) ? dataSource.data[item.date] : dataSource.data[item.date] = []).push(item);
-            });
-            setDataSource({...dataSource});
-        });
+        fetchDataSource();
     }, []);
 
     function handleScroll() {
@@ -37,8 +44,17 @@ function MenuList() {
         var direction = (scrollTop - oldScrollTop.current) > 0;
         oldScrollTop.current = scrollTop;
         const toThreshold = (navRef.current.scrollHeight - navRef.current.clientHeight - scrollTop) < threshold.current;
-        if (direction && toThreshold) {//请求api
-
+        if (direction && toThreshold) {//向下滚动且达到临界点提前请求api
+            if (pagination.current.page_now >= pagination.current.page_total) {//已获取完所有数据
+                pendingReqApiQueue.current = null;
+                return;
+            }
+            var page = pagination.current.page_now + 1;
+            if (pendingReqApiQueue.current.includes(page)) {//避免滚动过程中多次请求同一页数据
+                return;
+            }
+            pendingReqApiQueue.current.push(page);
+            fetchDataSource();
         }
     }
 
