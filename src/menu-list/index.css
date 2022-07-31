@@ -1,0 +1,55 @@
+.nav {
+    background: #252c37;
+    flex: 0 0 20vw;
+    min-width: 220px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    overflow: auto;
+    margin: 0
+}
+
+.nav-group {
+    padding: 5px;
+    color: #fff;
+}
+
+.nav-group .text {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-item {
+    color: #fff;
+    border-radius: 6px;
+    border: 1px solid #5a5959;
+    margin: 5px 0;
+    padding: 5px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.nav-item:hover {
+    background: #747777;
+}
+
+.nav-item:active {
+    background: #b6b9b9;
+}
+
+.nav-item .title {
+    font-weight: 500;
+}
+
+.icon-expand:before {
+    content: "∨";
+    font-size: 12px;
+    padding-right: 4px;
+}
+
+.icon-collapse:before {
+    content: "∧";
+    font-size: 12px;
+    padding-right: 4px;
+}
