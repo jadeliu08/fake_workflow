@@ -15,7 +15,6 @@
     "@progress/kendo-theme-default": "^5.4.1",
     "@reduxjs/toolkit": "^1.8.3",
     "axios": "^0.26.1",
-    "events": "^3.3.0",
     "http-proxy-middleware": "^2.0.6",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
@@ -24,8 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "zustand": "^4.0.0-rc.1"
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
