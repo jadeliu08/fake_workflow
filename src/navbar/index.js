@@ -7,7 +7,7 @@ function NavBar() {
     const pagination = useRef({page_now: 0, page_size: 20, page_total: 1});
     const navRef = useRef(null);
     const oldScrollTop = useRef(0);
-    const threshold = useRef(100);
+    const threshold = useRef(100);//距离底部阈值
     const pendingPageQueue = useRef([]);//缓存待请求的页
 
     const fetchDataSource = useMemo(function () {
