@@ -7,9 +7,12 @@ function fetchNavDataSource(page, page_size) {
     return axios.get(url, {responseType: "json"}).then(function (resp) {
         resp.data.data.list = resp.data.data.list.map(function (item) {
             var create_time = new Date(item.create_time);
+            var end_time = new Date(item.create_time + item.duration * 3600);
             var startHour = create_time.getHours();
-            var period = startHour > 12 ? (`${startHour - 12}pm`) : `${startHour}am`;
-            return {...item, period: period, date: create_time.toDateString()};
+            var endHour = end_time.getHours();
+            var periodStart = startHour > 12 ? (`${startHour - 12}:${create_time.getMinutes()} pm`) : `${startHour}:${create_time.getMinutes()} am`;
+            var periodEnd = endHour > 12 ? (`${endHour - 12}:${end_time.getMinutes()} pm`) : `${endHour}:${end_time.getMinutes()} am`;
+            return {...item, period: `${periodStart} - ${periodEnd}`, date: create_time.toDateString()};
         });
         return resp;
     });
@@ -90,7 +93,7 @@ function NavGroup(props) {
 function NavItem(props) {
     return <div className="nav-item">
         <span className="title">{props.dataItem.title}</span>
-        <div>{props.dataItem.period}</div>
+        <div className="period">{props.dataItem.period}</div>
     </div>
 }
 

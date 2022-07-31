@@ -42,6 +42,10 @@
     font-weight: 500;
 }
 
+.nav-item .period {
+    color: #c7c1c1;
+}
+
 .icon-expand:before {
     content: "∨";
     font-size: 12px;
