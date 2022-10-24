@@ -1,16 +1,17 @@
 import React from "react";
-import NavBar from "./navbar";
+import {Route} from "react-router-dom";
+import "@progress/kendo-theme-default/dist/all.css"
 
-
-function Container(props) {
-    return <div className="container"></div>;
-}
+import Login from "./login";
+import Logout from "./logout";
+import Page from "./page";
 
 function App() {
-    return <div style={{display: "flex", height: "100vh"}}>
-        <NavBar/>
-        <Container style={{flex: 7}}/>
-    </div>;
+    return <>
+        <Route path="/" component={Page}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/logout" component={Logout}/>
+    </>;
 }
 
 
