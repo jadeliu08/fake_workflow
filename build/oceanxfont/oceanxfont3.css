@@ -1,0 +1,116 @@
+@font-face {
+  font-family: "xicon3"; /* Project id 2755881 */
+  /* Color fonts */
+  src: 
+       url('oceanxfont3.woff2?t=1649321696604') format('woff2'),
+       url('oceanxfont3.ttf?t=1649321696604') format('truetype');
+}
+
+.xicon3 {
+  font-family: "xicon3" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.x-i-to-top:before {
+  content: "\e7f9";
+}
+
+.x-i-more:before {
+  content: "\e7f8";
+}
+
+.x-i-print:before {
+  content: "\e7f7";
+}
+
+.x-i-report:before {
+  content: "\e7f6";
+}
+
+.x-i-agent-setting:before {
+  content: "\e7f5";
+}
+
+.x-i-outlook:before {
+  content: "\e7f4";
+}
+
+.x-i-application:before {
+  content: "\e7f3";
+}
+
+.x-i-switch-view:before {
+  content: "\e7f2";
+}
+
+.x-i-search-circle:before {
+  content: "\e7f0";
+}
+
+.x-i-search:before {
+  content: "\e7f1";
+}
+
+.x-i-upgrade:before {
+  content: "\e7eb";
+}
+
+.x-i-upload:before {
+  content: "\e7e4";
+}
+
+.x-i-download:before {
+  content: "\e7e5";
+}
+
+.x-i-ou:before {
+  content: "\e7e3";
+}
+
+.x-i-users:before {
+  content: "\e7da";
+}
+
+.x-i-worker:before {
+  content: "\e7d9";
+}
+
+.x-i-role-manage:before {
+  content: "\e7ce";
+}
+
+.x-i-unsigned:before {
+  content: "\e7cd";
+}
+
+.x-i-wps:before {
+  content: "\e7ca";
+}
+
+.x-i-stamp:before {
+  content: "\e7c9";
+}
+
+.x-i-tip:before {
+  content: "\e7c6";
+}
+
+.x-i-verified:before {
+  content: "\e7c3";
+}
+
+.x-i-user:before {
+  content: "\e7c1";
+}
+
+.x-i-task-manage:before {
+  content: "\e7bb";
+}
+
+.x-i-todo-list:before {
+  content: "\e7a9";
+}
+
